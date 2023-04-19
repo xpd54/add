@@ -1,5 +1,5 @@
 const express = require("express")
-const add = require("./add")
+const add = require("./add/add")
 app = express()
 app.use(express.json())
 app.get("/",(req, res)=> {
