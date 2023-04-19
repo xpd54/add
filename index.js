@@ -1,5 +1,7 @@
 const express = require("express")
 const add = require("./add/add")
+const mongose = require("mongoose")
+const mongoURI = "mongodb://localhost:27017"
 app = express()
 app.use(express.json())
 app.get("/",(req, res)=> {
@@ -14,6 +16,10 @@ app.post("/add", (req, res) => {
 
 
 const port = 3000
-app.listen(port,async ()=>{
-    
+app.listen(port, async ()=>{
+    await mongose.connect(mongoURI, {dbName: "add"})
+    .catch((er) => {
+        console.log(er)
+    })
+    console.log("Server is running")
 })
